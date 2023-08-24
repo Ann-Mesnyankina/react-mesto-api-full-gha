@@ -1,0 +1,10 @@
+.element__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 246px;
+  margin: 0 auto;
+  padding-top: 25px;
+  padding-bottom: 31px;
+  align-items: baseline; 
+ }

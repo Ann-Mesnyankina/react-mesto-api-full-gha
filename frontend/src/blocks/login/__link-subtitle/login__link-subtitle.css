@@ -1,0 +1,15 @@
+.login__link-subtitle{
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;  
+        text-decoration: none; 
+        margin-left: 2px; 
+    }
+    
+    .login__link-subtitle:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    }

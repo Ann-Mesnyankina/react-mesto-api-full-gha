@@ -1,0 +1,10 @@
+.element__like-button_active {
+    background-image: url(../../../../image/Union.svg);
+    background-color:transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 19px;
+    width: 22px;
+    background-size: 22px 19px;
+    border: none;
+}

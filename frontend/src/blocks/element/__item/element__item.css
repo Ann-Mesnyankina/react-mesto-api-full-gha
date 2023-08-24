@@ -1,0 +1,9 @@
+.element__item{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    max-width: 282px;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}

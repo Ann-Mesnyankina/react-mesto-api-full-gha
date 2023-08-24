@@ -1,0 +1,8 @@
+.popup__image-registration {
+    background-image: url(../../../image/luck.svg);
+    width: 120px;
+    height: 120px;
+    margin-bottom: 32px;
+    margin-top: 26px;
+    margin-left: 118px;
+}
