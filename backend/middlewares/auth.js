@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const { JWT_SECRET = 'mesto-secret-key' } = process.env;
+
 const AuthError = require('../errors/auth-err');
 
 module.exports = (req, res, next) => {
@@ -10,7 +11,7 @@ module.exports = (req, res, next) => {
     return next(new AuthError('Необходима авторизация'));
   }
 
-  const token = authorization.replace('Bearer ', ' ');
+  const token = authorization.replace('Bearer ', '');
   let payload;
 
   try {
