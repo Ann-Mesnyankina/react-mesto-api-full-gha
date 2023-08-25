@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.111.40
+IP 158.160.111.40
 
 Frontend https://ann.mesnyankina.mesto.nomoredomainsicu.ru
 
