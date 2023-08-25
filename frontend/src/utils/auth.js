@@ -57,7 +57,7 @@ class Auth {
 }
 
 const auth = new Auth({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.ann.mesnyankina.mesto.nomoredomainsicu.ru',
     headers: { 'Content-Type': 'application/json' }
 });
 export default auth;
