@@ -30,7 +30,7 @@ module.exports.deleteCardById = (req, res, next) => {
 
 module.exports.createCard = (req, res, next) => {
   Card.create({ name: req.body.name, link: req.body.link, owner: req.user._id })
-    .then((card) => res.send(card))
+    .then((card) => res.status(201).send(card))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         next(new CastError('Переданы неверные данные'));

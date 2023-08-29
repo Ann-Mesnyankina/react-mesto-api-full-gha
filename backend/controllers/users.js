@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+const { JWT_SECRET = 'mesto-secret-key' } = process.env;
 const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
 const CastError = require('../errors/cast-err');
@@ -59,7 +61,7 @@ module.exports.createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
-      res.send({
+      res.status(201).send({
         _id: user._id,
         email: user.email,
         name: user.name,
@@ -111,7 +113,7 @@ module.exports.updateAvatar = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   User.findUserByCredentials(req.body.email, req.body.password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'mesto-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
       return res.send({ token });
     })
     .catch((error) => next(error));

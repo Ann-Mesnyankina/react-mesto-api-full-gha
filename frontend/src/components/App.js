@@ -47,8 +47,9 @@ function App() {
   }, [isLoggedIn])
 
   useEffect(() => {
-    if (localStorage.jwt) {
-      auth.getUserToken(localStorage.jwt)
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      auth.getUserToken(token)
         .then((res) => {
           setUserEmail(res.data.email)
           setLoggedIn(true)
