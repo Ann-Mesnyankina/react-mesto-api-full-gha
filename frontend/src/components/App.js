@@ -40,7 +40,6 @@ function App() {
         .then(([infoCard, infoUser]) => {
           setCurrentUser(infoUser.data)
           setCards(infoCard.data)
-          console.log(infoCard.data)
         })
         .catch((error => console.error(`Не получилось загрузить данные ${error}`)))
     }
