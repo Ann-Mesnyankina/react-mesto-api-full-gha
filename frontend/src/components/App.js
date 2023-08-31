@@ -50,8 +50,8 @@ function App() {
     if (token) {
       auth.getUserToken(token)
         .then((res) => {
-          setUserEmail(res.data.email)
           setLoggedIn(true)
+          setUserEmail(res.data.email)          
           transfer('/')
         })
         .catch((error => console.error(`Не получилось авторизоваться повторно ${error}`)))
