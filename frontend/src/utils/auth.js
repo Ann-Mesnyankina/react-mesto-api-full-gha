@@ -13,18 +13,7 @@ class Auth {
         };
     }
 
-    getUserToken(token) {
-        return fetch(`${this._baseUrl}/users/me`, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-            },
-        })
-            .then(this._getResData)
-    }
-
-    registration(data) {
+      registration(data) {
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
             headers: this._headers,
@@ -52,6 +41,16 @@ class Auth {
                     return data
                 }
             })
+    }
+    getUserToken(token) {
+        return fetch(`${this._baseUrl}/users/me`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+        })
+            .then(this._getResData)
     }
 
 }
