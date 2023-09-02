@@ -35,8 +35,7 @@ function App() {
   const transfer = useNavigate()
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt')
-    if (token) {
+    if (isLoggedIn) {
       Promise.all([api.getInitialCards(), api.getInfoUser()])
         .then(([infoCard, infoUser]) => {
           setCurrentUser(infoUser.data)

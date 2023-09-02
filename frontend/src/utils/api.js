@@ -24,7 +24,9 @@ class Api {
 
     getInfoUser() {
         return fetch(`${this._baseUrl}/users/me`, {
-            headers: this._headers,
+            headers: {
+                authorization: this._authorization
+            },
         })
             .then(this._getResData)
     }
