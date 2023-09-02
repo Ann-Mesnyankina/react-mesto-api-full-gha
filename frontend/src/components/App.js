@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      Promise.all([api.getInitialCards(), api.getInfoUser()])
+      Promise.all([api.getInitialCards(localStorage.jwt), api.getInfoUser(localStorage.jwt)])
         .then(([infoCard, infoUser]) => {
           setCurrentUser(infoUser.data)
           setCards(infoCard.data)
@@ -46,9 +46,8 @@ function App() {
   }, [isLoggedIn])
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt')
-    if (token) {
-      auth.getUserToken(token)
+    if (localStorage.jwt) {
+      auth.getUserToken(localStorage.jwt)
         .then((res) => {
           setLoggedIn(true)
           setUserEmail(res.data.email)          
@@ -62,7 +61,7 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((element) => element === currentUser._id);
-    api.changeLikeCardStatus(card._id, !isLiked)
+    api.changeLikeCardStatus(card._id, !isLiked, localStorage.jwt)
       .then((newCard) => {
         setCards((cards) => cards.map((c) => c._id === card._id ? newCard.data : c));
       })
@@ -77,7 +76,7 @@ function App() {
 
   function handleCardDelete(e) {
     e.preventDefault()
-    api.deleteCards(isDeleteCard)
+    api.deleteCards(isDeleteCard, localStorage.jwt)
       .then(() => {
         setCards(cards.filter(card => {
           return card._id !== isDeleteCard
@@ -104,7 +103,7 @@ function App() {
   }
 
   function handleUpdateUser(data) {
-    api.replaceUserData(data)
+    api.replaceUserData(data, localStorage.jwt)
       .then(res => {
         setCurrentUser(res.data)
         closeAllPopups()
@@ -114,7 +113,7 @@ function App() {
   }
 
   function handleUpdateAvatar(data) {
-    api.replaceAvatar(data)
+    api.replaceAvatar(data, localStorage.jwt)
       .then(res => {
         setCurrentUser(res.data)
         closeAllPopups()
@@ -123,7 +122,7 @@ function App() {
   }
 
   function handleAddPlaceSubmit(data) {
-    api.addNewCard(data)
+    api.addNewCard(data, localStorage.jwt)
       .then(res => {
         setCards([res, ...cards])
         closeAllPopups()
