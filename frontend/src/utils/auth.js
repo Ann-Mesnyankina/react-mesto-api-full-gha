@@ -35,13 +35,8 @@ class Auth {
             })
         })
             .then(this._getResData)
-            .then((data) => {
-                if (data.token) {
-                    localStorage.setItem('jwt', data.token);
-                    return data
-                }
-            })
     }
+    
     getUserToken(token) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: "GET",
