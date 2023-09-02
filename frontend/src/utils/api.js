@@ -1,8 +1,6 @@
 class Api {
     constructor(setting) {
-        this._baseUrl = setting.baseUrl;
-        this._headers = setting.headers;
-        this._authorization = setting.headers.authorization
+        this._baseUrl = setting.baseUrl;      
     }
 
     _getResData(res) {
